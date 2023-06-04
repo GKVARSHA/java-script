@@ -1,0 +1,195 @@
+
+<!-- saved from url=(0094)file:///C:/Users/gkyok/AppData/Local/Microsoft/Windows/INetCache/IE/C7EC5V2T/task9%5B1%5D.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task 3</title>
+<link rel="stylesheet" href="file:///C:/Users/gkyok/AppData/Local/Microsoft/Windows/INetCache/IE/C7EC5V2T/style.css">
+<style>
+
+.form-control {
+position: relative;
+}
+body{
+    padding: 30px;
+    padding-left: 27em;
+    padding-top: 5em;
+    color: white;
+    background-color: rgb(35, 95, 198);
+}
+table{
+    width:30em;
+    background-color: rgb(33, 164, 31);
+}
+
+th, td {
+    padding: 15px;
+}
+.register{
+    width: 33em;
+    height:2.5em;
+    border: none;
+}
+
+.form-control input:focus {
+outline: 0;
+border-color: #fff9f9;
+}
+.form-control.success input {
+border-color: #841547;
+}
+.form-control.error input {
+border-color: #76a11f;
+}
+.form-control small {
+color: #3c0791;
+position: absolute;
+bottom: 0;
+left: 0;
+visibility: hidden;
+}
+.form-control.error small {
+visibility: visible;
+}
+</style>
+</head>
+
+<body>
+<form class="form" id="form">
+<div class="form-control">
+    <div class="form-control">
+    </div><div class="form-control">
+    </div><div class="form-control">
+    </div><div class="form-control">
+    </div><div class="form-control">
+    </div><div class="form-control">
+    </div><div class="form-control">
+    </div><table>
+<tbody><tr>
+<td><label for="username">Name</label></td>
+<td><input type="text" id="username" placeholder="Enter your name">
+<small>Error message</small></td>
+</tr>
+
+
+<tr>
+<td><label for="email">Email</label></td>
+<td><input type="text" id="email" placeholder="Enter your email">
+<small>Error message</small></td></tr>
+
+
+<tr>
+<td><label for="password">Password:</label></td>
+<td><input type="password" id="password" placeholder="Enter Password">
+
+<small>Error message</small></td></tr>
+
+
+<tr>
+<td><label for="number">Phone number:</label></td>
+<td><input type="text" id="number" placeholder="Enter Phone number">
+<small>Error message</small></td></tr>
+
+
+
+<tr>
+        <td>Gender:</td>
+        <td>Male:<input type="radio">Female:<input type="radio">Other:<input type="radio"> </td>
+    </tr>
+
+<tr>
+        <td>Language:</td>
+        <td><select><option>Select language</option></select></td>
+    </tr>
+
+<tr>
+<td><label for="zipcode">Zip code</label></td>
+<td><input type="text" id="zipcode" placeholder="Enter your Zipcode">
+<small>Error message</small></td>
+</tr>
+
+
+
+<tr>
+    <td><label id="about">About:</label></td>
+<td><textarea type="text" id="about" placeholder="Write about yourself"></textarea>
+<small>Error message</small></td>
+</tr>
+
+
+
+
+</tbody></table>
+<table>
+<tbody><tr><td><button class="register"><b>Register</b></button></td>
+</tr></tbody></table>
+
+
+<script>
+const form = document.getElementById("form");
+const number = document.getElementById("number");
+const zipcode = document.getElementById("zipcode");
+const about = document.getElementById("about");
+const email = document.getElementById("email");
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+
+function showError(input, message) {
+const formControl = input.parentElement;
+formControl.className = "form-control error";
+const small = formControl.querySelector("small");
+small.innerText = message;
+}        
+
+function showSuccess(input) {
+const formControl = input.parentElement;
+formControl.className = "form-control success";
+}     
+
+function emailValidation(email) {
+const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+return re.test(String(email).toLowerCase());
+} 
+
+form.addEventListener("submit", function(e) {
+e.preventDefault(); //when we click on submit, it just submits, but we don't want that, we want to hold for a while
+if (username.value === "") {
+showError(username, "Username is required");
+} else {
+showSuccess(username);
+}
+if (number.value === "") {
+showError(number, "Number is required");
+} else {
+showSuccess(number);
+}
+if (zipcode.value === "") {
+showError(zipcode, "Zipcode is required");
+} else {
+showSuccess(zipcode);
+}
+if (about.value === "") {
+showError(about, "About is required");
+} else {
+showSuccess(about);
+}
+
+if (email.value === "") {
+showError(email, "Email is required");
+} else if (!emailValidation(email.value)) {
+showError(email, "Email is not valid");
+} else {
+showSuccess(email);
+}
+
+if (password.value === "") {
+showError(password, "Password is required");
+} else {
+showSuccess(password);
+}
+});
+
+
+</script>
+
+</div></form></body></html>
